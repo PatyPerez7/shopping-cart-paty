@@ -78,6 +78,7 @@ aside {
 #carrito {
     list-style: none;
     padding: 0;
+    margin: 10px;
 }
 
 #carrito .list-group-item { /* Item para especificar los valores del main.js */
@@ -91,5 +92,5 @@ aside {
 #total {
     font-size: 1.25rem;
     font-weight: bold;
-    color: #3b8ea5; /* Texto en azul claro */
+    color: #ffffff; /* Texto en azul claro */
 }
