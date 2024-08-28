@@ -1,0 +1,95 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5ee9e; /* Fondo amarillo pálido */
+    color: #2d728f; /* Texto en azul profundo */
+}
+
+/* Container */
+.container {
+    margin-top: 20px;
+}
+
+/* Main and aside styles */
+main {
+    background-color: #ffffff; /* Fondo blanco para la sección de productos */
+    border-radius: 8px;
+    padding: 20px;
+}
+
+aside {
+    background-color: #3b8ea5; /* Fondo azul claro para la sección del carrito */
+    color: #ffffff; /* Texto blanco */
+    border-radius: 8px;
+    padding: 20px;
+}
+
+/* Card styles */
+.card {
+    margin-bottom: 20px;
+    border: 1px solid #2d728f; /* Borde azul profundo */
+    border-radius: 8px;
+    overflow: hidden;
+    text-align: center; /* Centrar el texto y el contenido */
+}
+
+.card img {
+    width: 150px;
+    height: auto;
+    padding: 15px;
+    border-bottom: 1px solid #2d728f; /* Borde azul profundo debajo de la imagen */
+    object-fit: cover; /* Asegura que la imagen cubra el área del contenedor sin distorsionarse */
+}
+
+.card-body {
+    background-color: #f5ee9e; /* Fondo amarillo pálido para el cuerpo de la tarjeta */
+    color: #2d728f; /* Texto en azul profundo */
+    padding: 15px;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    color: #ab3428; /* Título en rojo oscuro */
+    margin: 10px; /* Espacio del título */
+}
+
+.card-text {
+    font-size: 1rem;
+    margin-bottom: 10px; /* Espacio debajo del texto del precio */
+}
+
+.card .btn {
+    margin-top: 10px; /* Espacio arriba del botón */
+}
+
+/* Button styles */
+.btn-primary {
+    background-color: #f49e4c; /* Fondo naranja para los botones */
+    border-color: #f49e4c; /* Borde naranja */
+    color: #ffffff; /* Texto blanco */
+    margin: 10px;
+}
+
+.btn-primary:hover {
+    background-color: #ab3428; /* Fondo rojo oscuro en hover */
+    border-color: #ab3428; /* Borde rojo oscuro en hover */
+}
+
+/* Cart styles */
+#carrito {
+    list-style: none;
+    padding: 0;
+}
+
+#carrito .list-group-item { /* Item para especificar los valores del main.js */
+    background-color: #ffffff; /* Fondo blanco para los elementos del carrito */
+    border: 1px solid #2d728f; /* Borde azul profundo */
+    color: #2d728f; /* Texto en azul profundo */
+    margin-bottom: 1px; /* Espacio entre los elementos del carrito */
+}
+
+/* Total styles */
+#total {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #3b8ea5; /* Texto en azul claro */
+}

@@ -2,27 +2,27 @@ document.addEventListener('DOMContentLoaded', () => {
     const baseDeDatos = [
         {
             id: 1,
-            nombre: 'mantequilla',
+            nombre: 'Mantequilla',
             precio: 10,
-            imagen: 'mantequilla.jpg'
+             imagen: 'imgs/mantequilla.jpg'
         },
         {
             id: 2,
-            nombre: 'coca de vidrio',
+            nombre: 'Coca de vidrio',
             precio: 30,
-            imagen: 'coca.jpg'
+            imagen: 'imgs/coca.svg'
         },
         {
             id: 3,
-            nombre: 'cheetos',
+            nombre: 'Cheetos',
             precio: 15,
-            imagen: 'cheetos.jpg'
+            imagen: 'imgs/cheetos.jpg'
         },
         {
             id: 4,
-            nombre: 'aguita',
+            nombre: 'Aguita',
             precio: 8,
-            imagen: 'aguita.jpg'
+            imagen: 'imgs/aguita.jpg'
         },
     ]
     let carrito = []
@@ -77,6 +77,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     }
 
+    function calcularTotalPorProducto(idProducto) {
+        // Obtener cantidad de veces que el producto está en el carrito
+        const numeroDeUnidadesItem = carrito.reduce((total, itemId) => {
+            return itemId === idProducto.toString() ? total + 1 : total;
+        }, 0);
+
+        // Obtener precio del producto
+        const producto = baseDeDatos.find((producto) => producto.id === idProducto);
+
+        // Calcular total por producto
+        return numeroDeUnidadesItem * producto.precio;
+    }
+
     function renderizarCarrito() {
         // Limpiar carrito
         DOMcarrito.textContent = '';
@@ -94,19 +107,24 @@ document.addEventListener('DOMContentLoaded', () => {
                 return itemId === item ? total += 1 : total // if
             }, 0)
 
-            //creamos el nodo del item del carrito
+            // Calcular total por tipo producto
+            const totalPorProducto = calcularTotalPorProducto(parseInt(item));
+
+            // Se crea el nodo del item del carrito
             const miNodo = document.createElement('li')
             miNodo.classList.add('list-group-item', 'text-right', 'mx-2')
-            miNodo.textContent = `${numeroDeUnidadesItem} x ${miItem[0].nombre} -> ${miItem[0].precio}${divisa}`
+            //miNodo.textContent = `${numeroDeUnidadesItem} x ${miItem[0].nombre} -> ${miItem[0].precio}${divisa}`
+            miNodo.textContent = `${numeroDeUnidadesItem} x ${miItem[0].nombre} -> ${divisa}${miItem[0].precio} (Total: ${divisa}${totalPorProducto})`;
 
             //Boton eliminar elementos carrito
             //
 
             //Se agregan al carrito los nodos
             DOMcarrito.appendChild(miNodo)
-
-            //Funcion mostrar total carrito
-            //
+            
+            //Funcion para mostrar el total del carrito
+            DOMtotal.textContent = calcularTotal()
+            // --------------------------------
 
         })
 
@@ -114,6 +132,17 @@ document.addEventListener('DOMContentLoaded', () => {
     function anadirProductosCarrito(evento) {
         carrito.push(evento.target.getAttribute('marcador'))
         renderizarCarrito()
+    }
+ 
+    //!NO HACE LA FUNCION
+    function calcularTotal() {
+        return carrito.reduce((total, producto) => {
+            const miProducto = baseDeDatos.filter((itemBaseDeDatos) => {
+            return itemBaseDeDatos.id === parseInt(producto)
+            })
+            // console.log(miProducto)
+            return total + miProducto[0].precio
+        }, 0).toFixed(2) // Limitar los decimales (a 2 en este caso)
     }
 
     renderizarProductos()
